@@ -27,14 +27,13 @@ class Game {
         .then(res=>{
             this.winner = res;
             h2Result.textContent = `${res} won the race!`
-        }).finally(()=>{
-            this.raceIsOn = false;
-            this.clearChoice()
         })
         Promise.all(race)
         .then(()=>{
-           raceList.insertAdjacentHTML("beforeEnd", '<p>Wyscig skonczony</p>')
+            raceList.insertAdjacentHTML("beforeEnd", '<p>Wyscig skonczony</p>')
             raceState.textContent = "Wyścig czeka na rozpoczęcie, wybierz zawodnika i kliknij start"
+            this.raceIsOn = false;
+            this.clearChoice()
         })
     }
     clearChoice(){
